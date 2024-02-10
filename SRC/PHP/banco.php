@@ -7,7 +7,5 @@
     $dbname="usuarios";
     
     $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
-        or die ('Could not connect to the database server' . mysqli_connect_error());
-    
-    echo "A conexão com o banco de dados foi bem sucessida!!";    
+        or die ('Could not connect to the database server' . mysqli_connect_error());  
 ?>
