@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-    //Gênero está "on" e não fem, masc ou out (No banco de dados)
+    
     if (isset($_POST['submit'])) {
         include_once('banco.php');
 
@@ -46,7 +46,7 @@
     }
     ?> 
 
-    <form action="cadast.php" method="post">
+    <form action="<?=$_SERVER['PHP_SELF'] ?>" method="post">
         <header>
             <h1>Cadastro</h1>
         </header>
@@ -69,9 +69,12 @@
 
             <label for="genero">
                 <h2>Gênero</h2>
-                <input type="radio" name="genero" id="sexoFem">Feminino
-                <input type="radio" name="genero" id="sexoMasc">Masculino
-                <input type="radio" name="genero" id="sexoOut" required>Outro
+                <select name="genero" id="genero">
+                    <option value="select">Selecione</option>
+                    <option value="fem">Feminino</option>
+                    <option value="masc">Masculino</option>
+                    <option value="out">Outro</option>
+                </select>
             </label>
 
             <label for="datNasc">
