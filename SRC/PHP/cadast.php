@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <!-- O diretório está correto, no entanto a ligação com o mesmo não está sendo feita -->
+    <script src="/SRC/SCRIPT/script.js"></script>
 </head>
 <body>
+<button onclick="verificar()">Botão</button>
     <?php
     
     if (isset($_POST['submit'])) {
@@ -20,23 +23,11 @@
 
         $erros = [];
 
-        if (strlen($senha) < 8) {
-            $erros[] = "A senha deve conter no mínimo 8 dígitos";
+        if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*[^a-zA-Z0-9]).{8,}$/', $senha)) {
+            $erros[] = "A senha deve conter no mínimo 8 caracteres, incluindo pelo menos uma letra maiúscula, uma letra minúscula e um símbolo";
         }
 
-        if(!preg_match('/[A-Z]/', $senha)){
-            $erros[] = "A senha deve conter letras maiúsculas";
-        }
-
-        if(!preg_match('/[a-z]/', $senha)){
-            $erros[] = "A senha deve conter letras minúsculas";
-        }
-
-        if (!preg_match('/[^a-zA-Z0-9]/', $senha)) {
-            $erros[] = "A senha deve conter no mínimo um símbolo";
-        }
-
-        if (empty($erros)) {
+        if (!empty($erros)) {
            
         } else {           
             foreach ($erros as $erro) {
@@ -52,6 +43,8 @@
         </header>
 
         <main>
+        <button onclick="verificar()">Botão</button>
+
             <label for="nome">
                 <h2>Nome</h2>
                 <input type="text" name="nome" required>
@@ -82,7 +75,7 @@
                 <input type="date" name="datNasc" id="datNasc" required>
             </label>
 
-            <input type="submit" value="Enviar" name="submit" id="submit">
+            <input type="submit" value="Enviar" name="submit" id="submit">           
         </main>
     </form>
 </body>
