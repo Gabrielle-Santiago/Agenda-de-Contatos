@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <!-- O diretório está correto, no entanto a ligação com o mesmo não está sendo feita -->
-    <script src="/SRC/SCRIPT/script.js"></script>
 </head>
 <body>
-<button onclick="verificar()">Botão</button>
+    <script>
+        alert("Qualquer informação aplicada está sujeita a perca. Não utilize informações reais!!!")
+    </script>
     <?php
-    
+    //consertar para ir para a página de login automaticamente
+    if($_SERVER["REQUEST_METHOD" == "POST"]){
     if (isset($_POST['submit'])) {
         include_once('banco.php');
 
@@ -26,15 +27,17 @@
         if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*[^a-zA-Z0-9]).{8,}$/', $senha)) {
             $erros[] = "A senha deve conter no mínimo 8 caracteres, incluindo pelo menos uma letra maiúscula, uma letra minúscula e um símbolo";
         }
-
-        if (!empty($erros)) {
-           
-        } else {           
+        if ($result) {
+            header("Location: telaInic.php");
+            exit;
+        }
+        else {           
             foreach ($erros as $erro) {
                 echo $erro . "<br>";
             }
         }
     }
+}
     ?> 
 
     <form action="<?=$_SERVER['PHP_SELF'] ?>" method="post">
@@ -43,7 +46,6 @@
         </header>
 
         <main>
-        <button onclick="verificar()">Botão</button>
 
             <label for="nome">
                 <h2>Nome</h2>
