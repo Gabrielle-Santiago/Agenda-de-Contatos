@@ -10,9 +10,8 @@
         alert("Qualquer informação aplicada está sujeita a perca. Não utilize informações reais!!!")
     </script>
     <?php
-    //consertar para ir para a página de login automaticamente
-    if($_SERVER["REQUEST_METHOD" == "POST"]){
-    if (isset($_POST['submit'])) {
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){ {
         include_once('banco.php');
 
         $nome = $_POST['nome'];
@@ -20,14 +19,15 @@
         $genero = $_POST['genero'];
         $datNasc = $_POST['datNasc'];
 
-        $result = mysqli_query($con, "INSERT INTO contatos(nome, senha, genero, datNasc) VALUES ('$nome', '$senha', '$genero', '$datNasc')");
-
         $erros = [];
+
+        $result = mysqli_query($con, "INSERT INTO contatos(nome, senha, genero, datNasc) VALUES ('$nome', '$senha', '$genero', '$datNasc')");
 
         if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*[^a-zA-Z0-9]).{8,}$/', $senha)) {
             $erros[] = "A senha deve conter no mínimo 8 caracteres, incluindo pelo menos uma letra maiúscula, uma letra minúscula e um símbolo";
         }
         if ($result) {
+            print "<script>alert('Cadastro efetuado com sucesso!!')<script/>";
             header("Location: telaInic.php");
             exit;
         }
