@@ -11,9 +11,9 @@
 
     $sql = "SELECT * FROM contatos";
 
-    $resultado = $con->query($sql);
+    $resultado = $con -> query($sql);
 
-    if ($resultado->num_rows > 0) {
+    if ($resultado -> num_rows > 0) {
 
         echo "<table class='table table-hover table-striped'>";
         echo "<tr><th>ID</th><th>Nome</th><th>Senha</th><th>Gênero</th><th>Data de Nascimento</th></tr>";

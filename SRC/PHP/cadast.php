@@ -46,7 +46,6 @@
         </header>
 
         <main>
-
             <label for="nome">
                 <h2>Nome</h2>
                 <input type="text" name="nome" required>
@@ -64,6 +63,7 @@
 
             <label for="genero">
                 <h2>Gênero</h2>
+                
                 <select name="genero" id="genero">
                     <option value="select">Selecione</option>
                     <option value="fem">Feminino</option>

@@ -8,28 +8,29 @@
 <body>
 <?php
 
-// Dados de conexão com o banco de dados
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$database = "usuarios";
+    // Dados de conexão com o banco de dados
+    $hostname = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "usuarios";
 
-// Estabelecer conexão com o banco de dados
-$conexao = mysqli_connect($hostname, $username, $password, $database);
+    // Estabelecer conexão com o banco de dados
+    $conexao = mysqli_connect($hostname, $username, $password, $database);
 
-// Verificar se a conexão foi bem-sucedida
-if (!$conexao) {
+    // Verificar se a conexão foi bem-sucedida
+    if (!$conexao) {
     die("Falha na conexão com o banco de dados: " . mysqli_connect_error());
 }
 
-// Verificar se o formulário de login foi submetido
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Verificar se o formulário de login foi submetido
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Obter dados do formulário de login
     $usuario = $_POST["nome"];
     $senha = $_POST["senha"];
 
     // Consulta SQL para verificar o login
+    
     $query = "SELECT * FROM contatos WHERE nome = ? AND senha = ?";
     if ($stmt = $conexao->prepare($query)) {
 
